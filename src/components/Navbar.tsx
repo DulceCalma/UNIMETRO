@@ -54,7 +54,7 @@ export default function Navbar() {
           onClick={() => scrollTo("inicio")}
           className="font-cursive text-2xl md:text-3xl text-primary hover:scale-105 transition-transform"
         >
-          🍫 Dulce Calma
+          🍫 Farmacia Antiestrés
         </button>
 
         {/* Desktop nav */}
