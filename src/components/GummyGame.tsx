@@ -60,13 +60,16 @@ export default function GummyGame() {
     idRef.current = 0;
   }, []);
 
+  const scoreRef = useRef(0);
+  scoreRef.current = score;
+
   useEffect(() => {
     if (!running) return;
     timerRef.current = setInterval(() => {
       setTimeLeft((t) => {
         if (t <= 1) {
           stopGame();
-          setHighScore((h) => Math.max(h, score));
+          setHighScore((h) => Math.max(h, scoreRef.current));
           return 0;
         }
         return t - 1;
@@ -77,7 +80,7 @@ export default function GummyGame() {
       clearInterval(timerRef.current);
       clearInterval(spawnRef.current);
     };
-  }, [running, spawnGummy, stopGame, score, config.spawnMs]);
+  }, [running, spawnGummy, stopGame, config.spawnMs]);
 
   useEffect(() => {
     if (!running) return;
